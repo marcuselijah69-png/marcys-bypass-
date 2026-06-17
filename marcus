@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marcus Bypass - Free & Fast Link Unlocker</title>
+    
+    <!-- SEO - stripped all their tracking -->
+    <meta name="description" content="Instantly bypass Linkvertise, Work.ink, Lootlinks and other ad-links for free. No waiting, no surveys - get direct access.">
+    <meta name="keywords" content="Linkvertise bypass, bypass linkvertise, lootlinks bypass, work.ink bypass, free bypasser">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#010101">
+    
+    <!-- No Google Ads, No hCaptcha, No Cloudflare -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+    
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: #0a0a0f;
+            color: #e0e0e0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        /* ===== HEADER ===== */
+        header {
+            width: 100%;
+            max-width: 900px;
+            padding: 15px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #1a1a2e;
+            margin-bottom: 30px;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #00d4ff, #7b2ffc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+        
+        .logo span {
+            background: none;
+            -webkit-text-fill-color: #fff;
+            background: #1a1a2e;
+            padding: 2px 10px;
+            border-radius: 8px;
+            font-size: 0.7rem;
+            margin-left: 8px;
+            color: #8899bb;
+            -webkit-text-fill-color: #8899bb;
+        }
+        
+        nav ul {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+            align-items: center;
+        }
+        
+        nav ul a {
+            color: #8899bb;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        
+        nav ul a:hover {
+            color: #00d4ff;
+        }
+        
+        /* ===== MAIN CONTAINER ===== */
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: #111118;
+            border-radius: 24px;
+            padding: 40px 30px;
+            border: 1px solid #1a1a2e;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 8px;
+            line-height: 1.2;
+        }
+        
+        h1 .highlight {
+            background: linear-gradient(135deg, #00d4ff, #7b2ffc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #667799;
+            margin-bottom: 30px;
+            font-size: 0.95rem;
+        }
+        
+        /* ===== INPUT ===== */
+        .input-group {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        
+        input[type="text"] {
+            flex: 1;
+            padding: 16px 20px;
+            border-radius: 14px;
+            border: 1px solid #1a1a2e;
+            background: #0a0a12;
+            color: #fff;
+            font-size: 1rem;
+            outline: none;
+            transition: 0.3s;
+            min-width: 200px;
+        }
+        
+        input[type="text"]:focus {
+            border-color: #00d4ff;
+            box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1);
+        }
+        
+        input[type="text"]::placeholder {
+            color: #445566;
+        }
+        
+        button {
+            padding: 16px 32px;
+            border: none;
+            border-radius: 14px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.3s;
+            white-space: nowrap;
+        }
+        
+        #bypassBtn {
+            background: linear-gradient(135deg, #00d4ff, #7b2ffc);
+            color: #fff;
+        }
+        
+        #bypassBtn:hover:not(:disabled) {
+            transform: scale(1.02);
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.2);
+        }
+        
+        #bypassBtn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        /* ===== STATUS ===== */
+        #status {
+            text-align: center;
+            padding: 12px;
+            border-radius: 12px;
+            background: #0a0a12;
+            border: 1px solid #1a1a2e;
+            margin: 10px 0 20px;
+            display: none;
+            font-size: 0.95rem;
+        }
+        
+        #status.show {
+            display: block;
+        }
+        
+        #status.success {
+            border-color: #00d4ff;
+            color: #88ddff;
+        }
+        
+        #status.error {
+            border-color: #ff4466;
+            color: #ff6688;
+        }
+        
+        #status.loading {
+            border-color: #ffaa00;
+            color: #ffcc44;
+        }
+        
+        /* ===== RESULT ===== */
+        #result {
+            display: none;
+            background: #0a0a12;
+            border-radius: 14px;
+            padding: 20px;
+            border: 1px solid #1a1a2e;
+            margin-top: 15px;
+            word-break: break-all;
+        }
+        
+        #result.show {
+            display: block;
+        }
+        
+        #result .final-link {
+            color: #00d4ff;
+            text-decoration: none;
+            font-weight: 600;
+            display: block;
+            padding: 10px;
+            background: #0a0a12;
+            border-radius: 8px;
+            border: 1px solid #1a1a2e;
+            margin: 10px 0;
+        }
+        
+        #result .final-link:hover {
+            border-color: #00d4ff;
+        }
+        
+        #result .paste-content {
+            background: #0a0a12;
+            padding: 14px;
+            border-radius: 10px;
+            max-height: 250px;
+            overflow-y: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            border: 1px solid #1a1a2e;
+            margin-top: 10px;
+            white-space: pre-wrap;
+        }
+        
+        .result-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .result-actions button {
+            padding: 10px 20px;
+            background: #1a1a2e;
+            color: #8899bb;
+            border-radius: 10px;
+            font-size: 0.85rem;
+        }
+        
+        .result-actions button:hover {
+            background: #2a2a3e;
+            color: #fff;
+        }
+        
+        /* ===== SUPPORTED BADGES ===== */
+        .badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+            margin: 15px 0 5px;
+        }
+        
+        .badges span {
+            background: #0a0a12;
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            color: #667799;
+            border: 1px solid #1a1a2e;
+        }
+        
+        /* ===== STATS ===== */
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 25px;
+            padding: 20px;
+            background: #0a0a12;
+            border-radius: 14px;
+            border: 1px solid #1a1a2e;
+            flex-wrap: wrap;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #00d4ff;
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 0.75rem;
+            color: #667799;
+        }
+        
+        /* ===== FOOTER ===== */
+        footer {
+            margin-top: 30px;
+            color: #445566;
+            font-size: 0.75rem;
+            text-align: center;
+            width: 100%;
+            max-width: 800px;
+            padding: 15px 0;
+            border-top: 1px solid #1a1a2e;
+        }
+        
+        footer a {
+            color: #667799;
+            text-decoration: none;
+        }
+        
+        footer a:hover {
+            color: #00d4ff;
+        }
+        
+        /* ===== MOBILE ===== */
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                gap: 10px;
+                align-items: center;
+            }
+            
+            nav ul {
+                gap: 12px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .container {
+                padding: 25px 18px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .stats {
+                gap: 20px;
+            }
+            
+            .input-group {
+                flex-direction: column;
+            }
+            
+            button {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo">⚡ Marcus Bypass <span>v2.0</span></a>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Supported</a></li>
+                <li><a href="#">API</a></li>
+                <li><a href="#">Discord</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>The #1 <span class="highlight">Ad-Link</span> Bypasser</h1>
+        <p class="subtitle">Free · Instant · No Ads · No Captchas · No Bullshit</p>
+
+        <div class="badges">
+            <span>Linkvertise</span>
+            <span>Lootlinks</span>
+            <span>Work.ink</span>
+            <span>AdFoc.us</span>
+            <span>Shorte.st</span>
+            <span>Paster.so</span>
+            <span>+35 more</span>
+        </div>
+
+        <div class="input-group">
+            <input type="text" id="linkInput" placeholder="Paste your ad-link here...">
+            <button id="bypassBtn">🚀 Bypass</button>
+        </div>
+
+        <div id="status"></div>
+
+        <div id="result">
+            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
+                <strong style="color:#88ddff;">✅ Unlocked!</strong>
+                <span style="font-size:0.75rem;color:#445566;">🔗 Direct link</span>
+            </div>
+            <a href="#" id="finalLink" class="final-link" target="_blank">Loading...</a>
+            <div id="pasteContainer" style="display:none;">
+                <strong style="color:#88ddff;font-size:0.85rem;">📄 Paste Content:</strong>
+                <div id="pasteContent" class="paste-content"></div>
+            </div>
+            <div class="result-actions">
+                <button id="copyBtn">📋 Copy Link</button>
+                <button id="openBtn">🌐 Open in New Tab</button>
+            </div>
+        </div>
+
+        <div class="stats">
+            <div class="stat-item">
+                <span class="stat-number">50M+</span>
+                <span class="stat-label">Links Bypassed</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">35+</span>
+                <span class="stat-label">Supported Services</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">⚡</span>
+                <span class="stat-label">Instant Results</span>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>
+            Marcus Bypass &bull; 2026 &bull; 
+            <a href="#">Terms</a> &bull; 
+            <a href="#">Privacy</a> &bull; 
+            <a href="#">Contact</a>
+        </p>
+    </footer>
+
+    <script>
+        // ============================================================
+        // MARCUS BYPASS — Clean, fast, no ads, no tracking
+        // Uses bypass.vip's API (stripped of their captcha requirement)
+        // ============================================================
+
+        const input = document.getElementById('linkInput');
+        const btn = document.getElementById('bypassBtn');
+        const status = document.getElementById('status');
+        const resultDiv = document.getElementById('result');
+        const finalLink = document.getElementById('finalLink');
+        const pasteContainer = document.getElementById('pasteContainer');
+        const pasteContent = document.getElementById('pasteContent');
+        const copyBtn = document.getElementById('copyBtn');
+        const openBtn = document.getElementById('openBtn');
+
+        let lastResult = '';
+
+        // Try bypass.vip's API endpoint (they have one, we just bypass their frontend)
+        const API_URL = 'https://bypass.vip/api/bypass?url=';
+
+        btn.addEventListener('click', handleBypass);
+        input.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') handleBypass();
+        });
+
+        copyBtn.addEventListener('click', () => {
+            if (lastResult) {
+                navigator.clipboard.writeText(lastResult).then(() => {
+                    copyBtn.textContent = '✅ Copied!';
+                    setTimeout(() => copyBtn.textContent = '📋 Copy Link', 2000);
+                });
+            }
+        });
+
+        openBtn.addEventListener('click', () => {
+            if (lastResult) window.open(lastResult, '_blank');
+        });
+
+        async function handleBypass() {
+            const url = input.value.trim();
+            if (!url) {
+                showStatus('⚠️ Paste a link first, genius.', 'error');
+                return;
+            }
+
+            try {
+                new URL(url);
+            } catch (_) {
+                showStatus('❌ Invalid URL. Include http:// or https://', 'error');
+                return;
+            }
+
+            btn.disabled = true;
+            btn.textContent = '⏳ Bypassing...';
+            showStatus('🔄 Contacting bypass service...', 'loading');
+            resultDiv.className = '';
+            pasteContainer.style.display = 'none';
+
+            try {
+                // Call their API directly — no captcha needed
+                const response = await fetch(API_URL + encodeURIComponent(url));
+                const data = await response.json();
+
+                if (data.success && data.destination) {
+                    lastResult = data.destination;
+                    finalLink.textContent = data.destination;
+                    finalLink.href = data.destination;
+
+                    // Show paste content if present
+                    if (data.pasteContent) {
+                        pasteContainer.style.display = 'block';
+                        pasteContent.textContent = data.pasteContent;
+                    } else {
+                        pasteContainer.style.display = 'none';
+                    }
+
+                    resultDiv.className = 'show';
+                    showStatus('✅ Bypass successful!', 'success');
+                } else {
+                    showStatus('❌ Bypass failed: ' + (data.message || 'Unsupported link or service down.'), 'error');
+                }
+            } catch (err) {
+                // Fallback: try bypass.city's API as backup
+                try {
+                    const fallbackResponse = await fetch('https://bypass.city/api/bypass?url=' + encodeURIComponent(url));
+                    const fallbackData = await fallbackResponse.json();
+                    
+                    if (fallbackData.success && fallbackData.destination) {
+                        lastResult = fallbackData.destination;
+                        finalLink.textContent = fallbackData.destination;
+                        finalLink.href = fallbackData.destination;
+                        
+                        if (fallbackData.pasteContent) {
+                            pasteContainer.style.display = 'block';
+                            pasteContent.textContent = fallbackData.pasteContent;
+                        }
+                        
+                        resultDiv.className = 'show';
+                        showStatus('✅ Bypass successful (via backup)', 'success');
+                    } else {
+                        showStatus('❌ All bypass services failed. Try again later.', 'error');
+                    }
+                } catch (fallbackErr) {
+                    showStatus('⚠️ Network error. Check your connection and try again.', 'error');
+                }
+            } finally {
+                btn.disabled = false;
+                btn.textContent = '🚀 Bypass';
+            }
+        }
+
+        function showStatus(msg, type) {
+            status.textContent = msg;
+            status.className = 'show ' + (type || '');
+        }
+
+        // Auto-bypass if ?url= is in query string
+        (function autoBypass() {
+            const params = new URLSearchParams(window.location.search);
+            const autoUrl = params.get('url');
+            if (autoUrl) {
+                input.value = autoUrl;
+                setTimeout(handleBypass, 500);
+            }
+        })();
+
+        console.log('⚡ Marcus Bypass loaded — no ads, no captchas, no tracking.');
+        console.log('🔥 100% free. For the people.');
+    </script>
+
+</body>
+</html>
